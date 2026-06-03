@@ -21,7 +21,7 @@ export function GameBoard({
       <h2 id="board-heading" className="sr-only">
         Game board
       </h2>
-      <fieldset className="grid grid-cols-3 gap-3">
+      <fieldset className="grid grid-cols-3 gap-3 text-3xl">
         <legend className="sr-only">Tic Tac Toe board</legend>
         {CELL_INDICES.map((index) => (
           <GameCell

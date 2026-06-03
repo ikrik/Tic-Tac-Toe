@@ -20,6 +20,9 @@ import {
   ThemeToggle,
 } from "../ui/components";
 
+const COMPUTER_MOVE_DELAY_MIN_MS = 500;
+const COMPUTER_MOVE_DELAY_RANGE_MS = 1000;
+
 export function App() {
   // state
   const [state, dispatch] = useReducer(gameReducer, undefined, () => {
@@ -34,7 +37,14 @@ export function App() {
 
   useEffect(() => {
     if (selectIsComputerTurn(state.game)) {
-      dispatch({ type: "playComputerMove" });
+      const delay =
+        COMPUTER_MOVE_DELAY_MIN_MS +
+        Math.random() * COMPUTER_MOVE_DELAY_RANGE_MS;
+      const timeoutId = window.setTimeout(() => {
+        dispatch({ type: "playComputerMove" });
+      }, delay);
+
+      return () => window.clearTimeout(timeoutId);
     }
   }, [state.game]);
 

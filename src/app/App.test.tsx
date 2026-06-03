@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { App } from "./App";
 
@@ -117,7 +117,13 @@ describe("App", () => {
       screen.getByText("Selected players: Human vs computer"),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Cell 1, X" })).toBeDisabled();
-    expect(screen.getByRole("button", { name: "Cell 5, O" })).toBeDisabled();
+    await waitFor(
+      () =>
+        expect(
+          screen.getByRole("button", { name: "Cell 5, O" }),
+        ).toBeDisabled(),
+      { timeout: 2000 },
+    );
     expect(screen.getByText("Turn: Player 1 (X)")).toBeInTheDocument();
   });
 
