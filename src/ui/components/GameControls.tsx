@@ -1,7 +1,9 @@
 import * as RadioGroup from "@radix-ui/react-radio-group";
+import { cva } from "class-variance-authority";
 import { RefreshCw } from "lucide-react";
 import type { ReactNode } from "react";
 import type { GameMode, PlayerMode } from "../../domain/game/types";
+import { cn } from "../../lib/utils";
 
 type GameControlsProps = {
   mode: GameMode;
@@ -12,8 +14,24 @@ type GameControlsProps = {
   onResetMatch: () => void;
 };
 
-const choiceClassName =
-  "rounded-md border border-border bg-white px-3 py-2 text-sm font-medium text-foreground focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground";
+const controlButtonClassName = cva(
+  "inline-flex items-center gap-2 rounded-md border border-border bg-white px-3 py-2 text-sm font-medium shadow-sm hover:bg-muted focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary",
+  {
+    variants: {
+      width: {
+        default: "",
+        fit: "w-fit",
+      },
+    },
+    defaultVariants: {
+      width: "default",
+    },
+  },
+);
+
+const choiceClassName = cva(
+  "rounded-md border border-border bg-white px-3 py-2 text-sm font-medium text-foreground focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+);
 
 export function GameControls({
   mode,
@@ -37,7 +55,7 @@ export function GameControls({
         </h2>
         <button
           type="button"
-          className="inline-flex items-center gap-2 rounded-md border border-border bg-white px-3 py-2 text-sm font-medium shadow-sm hover:bg-muted focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          className={cn(controlButtonClassName())}
           onClick={onNewGame}
         >
           <RefreshCw className="size-4" aria-hidden="true" />
@@ -46,7 +64,7 @@ export function GameControls({
       </div>
       <button
         type="button"
-        className="inline-flex w-fit items-center gap-2 rounded-md border border-border bg-white px-3 py-2 text-sm font-medium shadow-sm hover:bg-muted focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        className={cn(controlButtonClassName({ width: "fit" }))}
         onClick={onResetMatch}
       >
         Reset match
@@ -60,14 +78,14 @@ export function GameControls({
           aria-label="Game mode"
         >
           <RadioGroup.Item
-            className={choiceClassName}
+            className={cn(choiceClassName())}
             value="standard"
             id="mode-standard"
           >
             Standard
           </RadioGroup.Item>
           <RadioGroup.Item
-            className={choiceClassName}
+            className={cn(choiceClassName())}
             value="wild"
             id="mode-wild"
           >
@@ -87,14 +105,14 @@ export function GameControls({
           aria-label="Players"
         >
           <RadioGroup.Item
-            className={choiceClassName}
+            className={cn(choiceClassName())}
             value="twoPlayers"
             id="players-two"
           >
             Two players
           </RadioGroup.Item>
           <RadioGroup.Item
-            className={choiceClassName}
+            className={cn(choiceClassName())}
             value="vsComputer"
             id="players-computer"
           >

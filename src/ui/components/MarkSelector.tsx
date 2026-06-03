@@ -1,5 +1,7 @@
 import * as RadioGroup from "@radix-ui/react-radio-group";
+import { cva } from "class-variance-authority";
 import type { GameMode, Mark } from "../../domain/game/types";
+import { cn } from "../../lib/utils";
 
 type MarkSelectorProps = {
   mode: GameMode;
@@ -8,8 +10,9 @@ type MarkSelectorProps = {
   onMarkChange: (mark: Mark) => void;
 };
 
-const markClassName =
-  "flex size-14 items-center justify-center rounded-md border-2 border-border bg-white text-2xl font-bold tracking-normal focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-accent data-[state=checked]:text-primary";
+const markClassName = cva(
+  "flex size-14 items-center justify-center rounded-md border-2 border-border bg-white text-2xl font-bold tracking-normal focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-accent data-[state=checked]:text-primary",
+);
 
 export function MarkSelector({
   mode,
@@ -37,14 +40,14 @@ export function MarkSelector({
         disabled={mode === "standard"}
       >
         <RadioGroup.Item
-          className={markClassName}
+          className={cn(markClassName())}
           value="X"
           aria-label="Select X"
         >
           X
         </RadioGroup.Item>
         <RadioGroup.Item
-          className={markClassName}
+          className={cn(markClassName())}
           value="O"
           aria-label="Select O"
         >
