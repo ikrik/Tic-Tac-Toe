@@ -15,7 +15,7 @@ type GameControlsProps = {
 };
 
 const controlButtonClassName = cva(
-  "inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 text-sm font-medium text-card-foreground shadow-xs hover:bg-muted focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary",
+  "inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 text-sm font-medium text-card-foreground shadow-xs hover:bg-muted focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary hover:cursor-pointer",
   {
     variants: {
       width: {
@@ -30,7 +30,7 @@ const controlButtonClassName = cva(
 );
 
 const choiceClassName = cva(
-  "rounded-md border border-border bg-card px-3 py-2 text-sm font-medium text-card-foreground focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+  "rounded-md border border-border bg-card px-3 py-2 text-sm font-medium text-card-foreground focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground hover:cursor-pointer",
 );
 
 export function GameControls({
@@ -131,7 +131,10 @@ export function GameControls({
 function RadioFieldset({
   legend,
   children,
-}: { legend: string; children: ReactNode }) {
+}: {
+  legend: string;
+  children: ReactNode;
+}) {
   return (
     <fieldset className="flex flex-col gap-2">
       <legend className="mb-2 text-sm font-semibold tracking-normal">

@@ -50,7 +50,7 @@ function ThemePaletteDot({ theme, isActive, onSelect }: ThemePaletteDotProps) {
       <button
         type="button"
         className={cn(
-          "size-4 rounded-full border border-border transition focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary",
+          "size-4 rounded-full border border-border transition focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary hover:cursor-pointer",
           isActive ? "ring-2 ring-primary ring-offset-2 ring-offset-card" : "",
         )}
         style={{ backgroundColor: theme.swatchColor }}

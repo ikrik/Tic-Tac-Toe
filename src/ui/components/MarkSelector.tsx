@@ -11,7 +11,7 @@ type MarkSelectorProps = {
 };
 
 const markClassName = cva(
-  "flex size-14 items-center justify-center rounded-md border-2 border-border bg-card text-2xl font-bold tracking-normal text-card-foreground focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-accent data-[state=checked]:text-primary",
+  "flex size-14 items-center justify-center rounded-md border-2 border-border bg-card text-2xl font-bold tracking-normal text-card-foreground focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-accent data-[state=checked]:text-primary hover:cursor-pointer",
 );
 
 export function MarkSelector({

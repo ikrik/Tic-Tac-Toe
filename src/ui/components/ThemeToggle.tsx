@@ -22,7 +22,7 @@ export function ThemeToggle() {
       <span className="group relative inline-flex">
         <button
           type="button"
-          className="inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-border bg-card text-card-foreground shadow-xs transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          className="inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-border bg-card text-card-foreground shadow-xs transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary hover:cursor-pointer"
           aria-describedby={tooltipId}
           aria-label={`Switch to ${nextThemeMode} theme mode`}
           onClick={toggleThemeMode}

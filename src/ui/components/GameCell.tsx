@@ -16,7 +16,7 @@ const cellClassName = cva(
     variants: {
       disabled: {
         true: "cursor-not-allowed opacity-80",
-        false: "hover:border-primary hover:bg-accent",
+        false: "hover:border-primary hover:bg-accent hover:cursor-pointer",
       },
       winning: {
         true: "border-primary bg-accent text-primary",
