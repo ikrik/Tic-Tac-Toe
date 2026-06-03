@@ -15,7 +15,7 @@ type GameControlsProps = {
 };
 
 const controlButtonClassName = cva(
-  "inline-flex items-center gap-2 rounded-md border border-border bg-white px-3 py-2 text-sm font-medium shadow-sm hover:bg-muted focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary",
+  "inline-flex items-center gap-2 rounded-md border border-border bg-white px-3 py-2 text-sm font-medium shadow-xs hover:bg-muted focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary",
   {
     variants: {
       width: {

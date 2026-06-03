@@ -10,7 +10,7 @@ export function GameStatus({ game, selectedMark }: GameStatusProps) {
 
   return (
     <section
-      className="flex min-h-28 flex-col justify-center gap-2 rounded-lg border border-border bg-white p-4 shadow-sm"
+      className="flex min-h-28 flex-col justify-center gap-2 rounded-lg border border-border bg-white p-4 shadow-xs"
       aria-labelledby="status-heading"
     >
       <h2 id="status-heading" className="text-lg font-semibold tracking-normal">
