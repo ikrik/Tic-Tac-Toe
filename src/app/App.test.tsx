@@ -5,34 +5,58 @@ import { App } from "./App";
 beforeEach(() => {
   sessionStorage.clear();
   document.documentElement.removeAttribute("data-theme");
+  document.documentElement.removeAttribute("data-theme-mode");
   document.documentElement.style.colorScheme = "";
 });
 
 describe("App", () => {
-  it("toggles between dark and light themes", async () => {
+  it("selects theme palettes and toggles between dark and light modes", async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
-    expect(screen.getByRole("tooltip")).toHaveTextContent(
-      "Click to enable light mode",
+    expect(document.documentElement).toHaveAttribute(
+      "data-theme",
+      "amber-minimal",
     );
+    expect(document.documentElement).toHaveAttribute("data-theme-mode", "dark");
+    expect(screen.getByText("Click to enable light mode")).toBeInTheDocument();
+    expect(
+      screen.getByRole("radio", { name: "Use Amber Minimal theme" }),
+    ).toHaveAttribute("aria-checked", "true");
 
     await user.click(
-      screen.getByRole("button", { name: "Switch to light theme" }),
+      screen.getByRole("radio", { name: "Use Claymorphism theme" }),
     );
-    expect(document.documentElement).toHaveAttribute("data-theme", "light");
-    expect(screen.getByRole("tooltip")).toHaveTextContent(
-      "Click to enable dark mode",
+    expect(document.documentElement).toHaveAttribute(
+      "data-theme",
+      "claymorphism",
     );
+    expect(screen.getByText("Claymorphism")).toBeInTheDocument();
 
     await user.click(
-      screen.getByRole("button", { name: "Switch to dark theme" }),
+      screen.getByRole("button", { name: "Switch to light theme mode" }),
     );
-    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
-    expect(screen.getByRole("tooltip")).toHaveTextContent(
-      "Click to enable light mode",
+    expect(document.documentElement).toHaveAttribute(
+      "data-theme",
+      "claymorphism",
     );
+    expect(document.documentElement).toHaveAttribute(
+      "data-theme-mode",
+      "light",
+    );
+    expect(screen.getByText("Click to enable dark mode")).toBeInTheDocument();
+
+    await user.click(
+      screen.getByRole("radio", { name: "Use Cyberpunk theme" }),
+    );
+    expect(document.documentElement).toHaveAttribute("data-theme", "cyberpunk");
+    expect(document.documentElement).toHaveAttribute(
+      "data-theme-mode",
+      "light",
+    );
+    expect(
+      screen.getByRole("radio", { name: "Use Cyberpunk theme" }),
+    ).toHaveAttribute("aria-checked", "true");
   });
 
   it("starts a game and can reset the board", async () => {
