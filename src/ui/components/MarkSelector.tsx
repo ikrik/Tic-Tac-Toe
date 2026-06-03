@@ -1,0 +1,57 @@
+import * as RadioGroup from "@radix-ui/react-radio-group";
+import type { GameMode, Mark } from "../../domain/game/types";
+
+type MarkSelectorProps = {
+  mode: GameMode;
+  selectedMark: Mark;
+  currentPlayerMark: Mark;
+  onMarkChange: (mark: Mark) => void;
+};
+
+const markClassName =
+  "flex size-14 items-center justify-center rounded-md border-2 border-border bg-white text-2xl font-bold tracking-normal focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=checked]:border-primary data-[state=checked]:bg-accent data-[state=checked]:text-primary";
+
+export function MarkSelector({
+  mode,
+  selectedMark,
+  currentPlayerMark,
+  onMarkChange,
+}: MarkSelectorProps) {
+  return (
+    <section className="flex flex-col gap-3" aria-labelledby="mark-heading">
+      <div>
+        <h2 id="mark-heading" className="text-lg font-semibold tracking-normal">
+          Mark
+        </h2>
+        <p className="text-sm text-muted-foreground">
+          {mode === "wild"
+            ? "Selected mark controls the next move."
+            : `Standard mode uses ${currentPlayerMark}.`}
+        </p>
+      </div>
+      <RadioGroup.Root
+        className="flex gap-3"
+        value={selectedMark}
+        onValueChange={(value) => onMarkChange(value as Mark)}
+        aria-label="Mark selection"
+        disabled={mode === "standard"}
+      >
+        <RadioGroup.Item
+          className={markClassName}
+          value="X"
+          aria-label="Select X"
+        >
+          X
+        </RadioGroup.Item>
+        <RadioGroup.Item
+          className={markClassName}
+          value="O"
+          aria-label="Select O"
+        >
+          O
+        </RadioGroup.Item>
+      </RadioGroup.Root>
+      <p className="text-sm font-medium">Selected mark: {selectedMark}</p>
+    </section>
+  );
+}
