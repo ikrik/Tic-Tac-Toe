@@ -2,6 +2,12 @@
 
 A client-side Tic Tac Toe app built with React 19, TypeScript, Vite, Tailwind CSS, Radix UI primitives, Biome, Vitest, and React Testing Library.
 
+## Technical Design
+
+This assignment describes a client-side Tic Tac Toe app built with React and TypeScript, with emphasis on rule correctness, clear separation between domain and UI concerns, accessibility, and testability. It highlights the two game modes, the lightweight heuristic computer player, and a deliberately small implementation without backend services or advanced AI.
+
+[Technical Design Assignment](src/docs/Technical%20Design%20Assignment.pdf)
+
 ## Install
 
 ```bash
