@@ -11,7 +11,7 @@ type GameCellProps = {
 };
 
 const cellClassName = cva(
-  "flex aspect-square min-h-20 items-center justify-center rounded-lg border-2 bg-white text-4xl font-bold tracking-normal shadow-xs transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary",
+  "flex aspect-square min-h-20 items-center justify-center rounded-lg border-2 bg-card text-4xl font-bold tracking-normal shadow-xs transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-primary",
   {
     variants: {
       disabled: {

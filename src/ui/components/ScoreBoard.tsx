@@ -13,7 +13,7 @@ export function ScoreBoard({
 }: ScoreBoardProps) {
   return (
     <section
-      className="rounded-lg border border-border bg-white p-4 shadow-xs"
+      className="rounded-lg border border-border bg-card p-4 text-card-foreground shadow-xs"
       aria-labelledby="score-heading"
     >
       <div className="mb-3 flex items-baseline justify-between gap-3">
