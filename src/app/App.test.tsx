@@ -4,9 +4,37 @@ import { App } from "./App";
 
 beforeEach(() => {
   sessionStorage.clear();
+  document.documentElement.removeAttribute("data-theme");
+  document.documentElement.style.colorScheme = "";
 });
 
 describe("App", () => {
+  it("toggles between dark and light themes", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
+    expect(screen.getByRole("tooltip")).toHaveTextContent(
+      "Click to enable light mode",
+    );
+
+    await user.click(
+      screen.getByRole("button", { name: "Switch to light theme" }),
+    );
+    expect(document.documentElement).toHaveAttribute("data-theme", "light");
+    expect(screen.getByRole("tooltip")).toHaveTextContent(
+      "Click to enable dark mode",
+    );
+
+    await user.click(
+      screen.getByRole("button", { name: "Switch to dark theme" }),
+    );
+    expect(document.documentElement).toHaveAttribute("data-theme", "dark");
+    expect(screen.getByRole("tooltip")).toHaveTextContent(
+      "Click to enable light mode",
+    );
+  });
+
   it("starts a game and can reset the board", async () => {
     const user = userEvent.setup();
     render(<App />);
