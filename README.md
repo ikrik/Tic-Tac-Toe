@@ -8,6 +8,8 @@ This assignment describes a client-side Tic Tac Toe app built with React and Typ
 
 [Technical Design Assignment](src/docs/Technical%20Design%20Assignment.pdf)
 
+- Live demo: https://tic-tac-toe-ikrik.vercel.app
+
 ## Install
 
 ```bash
